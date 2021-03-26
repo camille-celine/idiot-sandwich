@@ -9,6 +9,9 @@
           <%= f.input :prep_time, placeholder: 'Preparation Time' %>
           <%= f.input :difficulty, collection: Recipe.difficulties.map{ |l| [l.first, l.first.humanize] }, label_method: :second, value_method: :first%>
           <%= f.input :serving, placeholder: 'Number of servings' %>
+          <%= f.simple_fields_for :instructions do |w| %>
+            <%= w.input :instruction_text %>
+          <% end %>
           <%= f.button :submit, 'Save your recipe', class: "btn btn-primary btn-lg btn-form" %>
       <% end %>
     </div>
