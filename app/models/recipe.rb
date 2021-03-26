@@ -5,4 +5,6 @@ class Recipe < ApplicationRecord
   has_many :ingredients, dependent: :destroy
   has_many :users, through: :saved_recipes
   enum difficulty: { easy: 1, medium: 2, hard: 3}
+
+  accepts_nested_attributes_for :instructions
 end
