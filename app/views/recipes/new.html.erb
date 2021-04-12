@@ -5,7 +5,7 @@
         <%= simple_form_for @recipe do |f| %>
           <%= f.input :name, placeholder: 'Name your recipe' %>
           <%= f.input :description, placeholder: 'Describe your recipe' %>
-          <%= f.input :cooking_time, placeholder: 'Cooking time' %>
+          <%= f.input :cooking_time, placeholder: 'Cooking time (min)' %>
           <%= f.input :prep_time, placeholder: 'Preparation Time' %>
           <%= f.input :difficulty, collection: Recipe.difficulties.map{ |l| [l.first, l.first.humanize] }, label_method: :second, value_method: :first%>
           <%= f.input :serving, placeholder: 'Number of servings' %>
@@ -18,7 +18,3 @@
     </div>
   </div>
 </div>
-
- 
-
-
