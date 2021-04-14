@@ -10,7 +10,9 @@
         <%= instruction.instruction_text %>
     <% end %></p>
     <p>Ingredients: <% @recipe.ingredients.each do |ingredient| %>
-        <%= ingredient.name %>
+        <%= ingredient.amount%>
+        <%= ingredient.measurement_lookup.measurement_type %>
+        <%= ingredient.ingredient_list.name %>
     <% end %></p>
     <% if @recipe.user == current_user %>
         <%= link_to "edit your recipe", edit_recipe_path(@recipe) %>
