@@ -9,5 +9,8 @@ class Recipe < ApplicationRecord
   has_many :users, through: :saved_recipes
   enum difficulty: { easy: 1, medium: 2, hard: 3}
 
+  validates :name, :description, :cooking_time, :difficulty, :prep_time, presence: true
+  validates :name, uniqueness: true
+
   accepts_nested_attributes_for :instructions, :ingredients
 end
