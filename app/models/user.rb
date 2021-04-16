@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :recipes
   has_many :joint_recipes, through: :saved_recipes, source: :recipe
+
+  # validates :username, presence: true
+  validates :username, :email, uniqueness: true
 end
