@@ -13,5 +13,5 @@ class Recipe < ApplicationRecord
   validates :name, :description, :cooking_time, :difficulty, :prep_time, presence: true
   validates :name, uniqueness: true
 
-  accepts_nested_attributes_for :instructions, :ingredients
+  accepts_nested_attributes_for :instructions, :ingredients, :recipe_tags
 end
