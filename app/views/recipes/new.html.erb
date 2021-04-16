@@ -18,6 +18,9 @@
           <%= f.simple_fields_for :instructions do |w| %>
             <%= w.input :instruction_text %>
           <% end %>
+           <%= f.simple_fields_for :recipe_tags do |t| %>
+            <%= t.input :tag_id, collection: Tag.all%>
+          <% end %>
           <%= f.button :submit, 'Save your recipe', class: "btn btn-primary btn-lg btn-form" %>
         <% end %>
     </div>

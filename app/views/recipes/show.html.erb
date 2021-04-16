@@ -14,6 +14,10 @@
         <%= ingredient.measurement_lookup.measurement_type %>
         <%= ingredient.ingredient_list.name %>
     <% end %></p>
+    <% @recipe.tags.each do |tag| %>
+        <p>Tag: <%= tag.name %></p>
+        <p>Category:<%= tag.recipe_category.name %></p>
+    <% end %>
     <% if @recipe.user == current_user %>
         <%= link_to "edit your recipe", edit_recipe_path(@recipe) %>
         <%= link_to 'Delete', @recipe, method: :delete, data: { confirm: 'Are you sure you want to delete this recipe?' }, class: "ml-3 btn btn-outline-danger btn-md my-2" %>
