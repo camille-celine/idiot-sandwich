@@ -2,7 +2,8 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :instructions, dependent: :destroy
   has_many :recipe_tags, dependent: :destroy
-  has_many :recipe_categories, through: :recipe_tags
+  has_many :tags, through: :recipe_tags
+  has_many :recipe_categories, through: :tags
   has_many :ingredients, dependent: :destroy
   has_many :ingredient_lists, through: :ingredients
   has_many :measurement_lookups, through: :ingredients
