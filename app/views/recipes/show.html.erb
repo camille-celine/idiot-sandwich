@@ -18,8 +18,15 @@
         <p>Tag: <%= tag.name %></p>
         <p>Category:<%= tag.recipe_category.name %></p>
     <% end %>
-    <% if @recipe.user == current_user %>
+    <% if policy(@recipe).update? %>
         <%= link_to "edit your recipe", edit_recipe_path(@recipe) %>
+    <% end %>
+    <% if policy(@recipe).destroy? %>
         <%= link_to 'Delete', @recipe, method: :delete, data: { confirm: 'Are you sure you want to delete this recipe?' }, class: "ml-3 btn btn-outline-danger btn-md my-2" %>
+    <% end %>
+    <% if @recipe.user != current_user %>
+        <%= simple_form_for [@recipe, @saved_recipe] do |f| %>
+            <%= f.button :submit, 'Save', class: "btn btn-primary text-white btn-md" %>
+        <% end %>
     <% end %>
 </div>
