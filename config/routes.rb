@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
 
-  resources :recipes
+  resources :recipes do 
+    resources :saved_recipes, only: [ :create ]
+  end
+
+  resources :saved_recipes, only: [ :index, :destroy ]
 end
