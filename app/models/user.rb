@@ -9,4 +9,5 @@ class User < ApplicationRecord
 
   # validates :username, presence: true
   validates :username, :email, uniqueness: true
+  validates :username, presence: true
 end
