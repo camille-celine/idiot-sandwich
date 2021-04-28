@@ -1,0 +1,6 @@
+<% @saved_recipes.each do |saved_recipe| %>
+    <%= saved_recipe.recipe.name %>
+    <% if policy(saved_recipe).destroy? %>
+        <%= link_to 'Delete', saved_recipe, method: :delete, data: { confirm: 'Are you sure you want to unsave this recipe?' }%>
+    <% end %>
+<% end %>

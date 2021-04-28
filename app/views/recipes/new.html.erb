@@ -9,11 +9,20 @@
           <%= f.input :prep_time, placeholder: 'Preparation Time' %>
           <%= f.input :difficulty, collection: Recipe.difficulties.map{ |l| [l.first, l.first.humanize] }, label_method: :second, value_method: :first%>
           <%= f.input :serving, placeholder: 'Number of servings' %>
+          <%#= f.association :ingredient_lists, as: :check_boxes %>
+          <%= f.simple_fields_for :ingredients do |i| %>
+            <%= i.input :ingredient_list_id, collection: IngredientList.all %>
+            <%= i.input :measurement_lookup_id, collection: MeasurementLookup.all, label_method: :measurement_type%>
+            <%= i.input :amount %>
+          <% end %>
           <%= f.simple_fields_for :instructions do |w| %>
             <%= w.input :instruction_text %>
           <% end %>
+           <%= f.simple_fields_for :recipe_tags do |t| %>
+            <%= t.input :tag_id, collection: Tag.all%>
+          <% end %>
           <%= f.button :submit, 'Save your recipe', class: "btn btn-primary btn-lg btn-form" %>
-      <% end %>
+        <% end %>
     </div>
   </div>
 </div>

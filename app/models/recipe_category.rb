@@ -1,3 +1,4 @@
 class RecipeCategory < ApplicationRecord
-  has_many :recipe_tags
+  has_many :tags
+  has_many :recipes, through: :tags
 end

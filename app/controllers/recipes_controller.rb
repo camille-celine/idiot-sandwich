@@ -2,15 +2,20 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:edit, :update, :show, :destroy]
 
   def index
+    @recipes = policy_scope(Recipe)
     @recipes = Recipe.all
   end
 
   def show
+    @saved_recipe = SavedRecipe.new
   end
 
   def new
     @recipe = Recipe.new
     @recipe.instructions.build
+    @recipe.ingredients.build
+    @recipe.recipe_tags.build
+    authorize @recipe
   end
 
   def create
@@ -21,6 +26,7 @@ class RecipesController < ApplicationController
     else
       render :new
     end
+    authorize @recipe
   end
 
   def edit
@@ -42,10 +48,11 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :cooking_time, :difficulty, :serving, :prep_time, instructions_attributes: [:id, :instruction_text])
+    params.require(:recipe).permit(:name, :description, :cooking_time, :difficulty, :serving, :prep_time, instructions_attributes: [:id, :instruction_text], ingredients_attributes: [:id, :ingredient_list_id, :measurement_lookup_id, :amount], recipe_tags_attributes: [:id, :recipe_id, :tag_id])
   end
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
+    authorize @recipe
   end
 end
