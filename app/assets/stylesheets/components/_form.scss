@@ -1,0 +1,29 @@
+.form_sign_up {
+  width:100%;
+  height: 100%;
+  display:inline;
+  padding: 10px;
+}
+
+.button_log_in {
+  background-color: $yellow;
+  padding: 10px 24px;
+  border-radius: 5px;
+  color:white;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  border-color: $yellow;
+  border-style: solid;
+}
+
+.button_log_in:hover {
+  background-color:white;
+  border-color: $yellow;
+  color: $yellow;
+  border-style: solid;
+}
+
+.input{
+  border-radius:10px;
+  border-color: white;
+}
