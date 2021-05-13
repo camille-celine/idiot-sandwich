@@ -29,7 +29,7 @@ gem 'pg_search', '~> 2.3.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'pundit'
-
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 gem 'devise'
 
 gem 'autoprefixer-rails'
@@ -39,8 +39,16 @@ group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
 
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+end
+
+group :development, :test do
+  gem "capybara", ">= 2.15"
+  gem "rspec-rails"
+  
+
 end
 
 group :development do
