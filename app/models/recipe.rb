@@ -15,4 +15,12 @@ class Recipe < ApplicationRecord
   validates :name, uniqueness: true
 
   accepts_nested_attributes_for :instructions, :ingredients, :recipe_tags
+
+  include PgSearch::Model
+  pg_search_scope :search_name_and_description,
+                  against: %i[name description],
+                  using: {
+                    # full text search, supports weightung, prefix searches, and stemming in multiple languages
+                    tsearch: { prefix: true }
+                  }
 end

@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = policy_scope(Recipe)
-    @recipes = Recipe.all
+    @recipes = filter_recipes(Recipe)
   end
 
   def show
@@ -54,5 +54,17 @@ class RecipesController < ApplicationController
   def set_recipe
     @recipe = Recipe.find(params[:id])
     authorize @recipe
+  end
+
+  def filter_recipes(scope)
+    # get request in URL
+    if params[:query].present?
+    @recipe_search = Recipe.search_name_and_description(params[:query])
+      # i like insensitive
+      # sql_query = "name ILIKE :query OR description ILIKE :query"
+      # scope.where(sql_query, query: "%#{params[:query]}%")
+    else
+      scope.all
+    end
   end
 end

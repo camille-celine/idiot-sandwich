@@ -269,7 +269,7 @@ DEPENDENCIES
   listen (~> 3.2)
   mimemagic!
   pg (>= 0.18, < 2.0)
-  pg_search (~> 2.3.0)
+  pg_search
   pry-byebug
   pry-rails
   puma (~> 4.1)
@@ -290,4 +290,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.2.15
+   2.2.17
