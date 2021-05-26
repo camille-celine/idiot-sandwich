@@ -17,8 +17,7 @@
         <%= ingredient.ingredient_list.name %>
     <% end %></p>
     <% @recipe.tags.each do |tag| %>
-        <p>Tag: <%= tag.name %></p>
-        <p>Category:<%= tag.recipe_category.name %></p>
+        <p><%= tag.recipe_category.name %>: <%= tag.name %></p>
     <% end %>
     <% if policy(@recipe).update? %>
         <%= link_to "Edit your recipe", edit_recipe_path(@recipe) %>

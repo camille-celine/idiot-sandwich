@@ -15,6 +15,7 @@ class RecipesController < ApplicationController
     @recipe.instructions.build
     @recipe.ingredients.build
     @recipe.recipe_tags.build
+    @categories = RecipeCategory.all
     authorize @recipe
   end
 
@@ -30,6 +31,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @categories = RecipeCategory.all
   end
 
   def update
