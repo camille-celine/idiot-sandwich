@@ -31,7 +31,6 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @categories = RecipeCategory.all
   end
 
   def update

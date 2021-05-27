@@ -1,24 +1,31 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logo.png" %>
-    <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #222E50;">
+  <div class="container-fluid">
+    <i class="fas fa-bread-slice mr-2"></i><%= link_to " Idiot Sandwich", root_path, class: "navbar-brand font" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "All Recipes", recipes_path, class: "nav-link active" %>
+        </li>
+      </ul>
+    </div>
+  </div>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="d-flex mr-2 mt-2">
+      <%= form_tag recipes_path, class: "d-flex", method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control me-2",
+        placeholder: "Find a recipe" %>
+        <%= submit_tag "Search", class: "btn btn-outline-success" %>
+      <% end %>
+    </div>
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Recipes", recipes_path, class: "nav-link" %>
-        </li>
         <li class="nav-item dropdown">
-          <%= image_tag "https://robohash.org/139.162.116.133.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= image_tag "pngwing.com.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Saved Recipes", saved_recipes_path, class: "dropdown-item" %>
             <%= link_to "Another action", "#", class: "dropdown-item" %>
@@ -32,4 +39,6 @@
       <% end %>
     </ul>
   </div>
-</div>
+</nav>
+
+

@@ -1,12 +1,10 @@
-.navbar-lewagon {
+.navbar-brand {
   justify-content: space-between;
-  background: white;
+  font-family: "Pacifico";
+  font-size: 1.5rem;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.fa-bread-slice {
+  color: $white;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
