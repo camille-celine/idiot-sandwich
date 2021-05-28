@@ -1,12 +1,12 @@
 <div class="container">
 
-<%= form_tag recipes_path, class: "form-horizontal pr-0", method: :get do %>
-  <%= text_field_tag :query,
+  <%= form_tag recipes_path, class: "d-flex", method: :get do %>
+    <%= text_field_tag :query,
     params[:query],
-    class: "form-control",
+    class: "form-control me-2",
     placeholder: "Find a recipe" %>
-  <%= submit_tag "Search", class: "btn btn-success ml-3" %>
-<% end %>
+    <%= submit_tag "Search", class: "btn btn-search" %>
+  <% end %>
 
 
   <h2>Recipes</h2>
@@ -14,4 +14,24 @@
   <% if policy(Recipe).create? %>
       <p><%= link_to "Create a recipe", new_recipe_path %></p>
   <% end %>
+
+    <h3>All recipes</h3>
+  <div class="row row-cols-1 row-cols-md-3 g-4 ">
+    
+    <% @recipes.each do |recipe| %>
+      <div class="col mb-4">
+        <div class="card h-100">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= recipe.name %></h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <%= link_to "See recipe", recipe %>
+            <% if policy(recipe).destroy? %>
+              <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' }%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

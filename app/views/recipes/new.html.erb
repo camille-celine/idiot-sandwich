@@ -5,18 +5,38 @@
         <%= simple_form_for @recipe do |f| %>
           <%= f.input :name, placeholder: 'Name your recipe' %>
           <%= f.input :description, placeholder: 'Describe your recipe' %>
-          <%= f.input :cooking_time, placeholder: 'Cooking time (min)' %>
-          <%= f.input :prep_time, placeholder: 'Preparation Time' %>
-          <%= f.input :difficulty, collection: Recipe.difficulties.map{ |l| [l.first, l.first.humanize] }, label_method: :second, value_method: :first%>
-          <%= f.input :serving, placeholder: 'Number of servings' %>
+          <div class="row">
+            <div class="col">
+              <%= f.input :cooking_time, placeholder: 'Cooking time (min)', class: "form-control" %>
+            </div>
+            <div class="col">
+              <%= f.input :prep_time, placeholder: 'Preparation Time', class: "form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <%= f.input :difficulty, collection: Recipe.difficulties.map{ |l| [l.first, l.first.humanize] }, label_method: :second, value_method: :first, class: "form-control" %>
+            </div>
+            <div class="col">
+              <%= f.input :serving, placeholder: 'Number of servings', class: "form-control" %>
+            </div>
+          </div> 
           <%#= f.association :ingredient_lists, as: :check_boxes %>
           <%= f.simple_fields_for :ingredients do |i| %>
-            <%= i.input :ingredient_list_id, collection: IngredientList.all %>
-            <%= i.input :measurement_lookup_id, collection: MeasurementLookup.all, label_method: :measurement_type%>
-            <%= i.input :amount %>
+            <div class="row">
+              <div class="col">
+                <%= i.input :amount, class: "form-control" %>
+              </div>
+              <div class="col">
+                <%= i.input :measurement_lookup_id, collection: MeasurementLookup.all, label_method: :measurement_type, class: "form-control", label: "Unit"%>
+              </div>
+              <div class="col">
+                <%= i.input :ingredient_list_id, collection: IngredientList.all, class: "form-control", label: "Ingredient" %>
+              </div>
+            </div>  
           <% end %>
           <%= f.simple_fields_for :instructions do |w| %>
-            <%= w.input :instruction_text %>
+            <%= w.input :instruction_text, label: "Instructions"  %>
           <% end %>
           <% @categories.each do |category| %>
              <p><%= category.name %></p> 
