@@ -60,7 +60,7 @@ class RecipesController < ApplicationController
   def filter_recipes(scope)
     # get request in URL
     if params[:query].present?
-    @recipe_search = Recipe.search_name_and_description(params[:query])
+      @recipe_search = Recipe.search_name_and_description(params[:query])
       # i like insensitive
       # sql_query = "name ILIKE :query OR description ILIKE :query"
       # scope.where(sql_query, query: "%#{params[:query]}%")

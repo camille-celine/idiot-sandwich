@@ -19,6 +19,9 @@ class Recipe < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :search_name_and_description,
                   against: %i[name description],
+                  associated_against: {
+                    ingredient_lists: :name
+                  },
                   using: {
                     # full text search, supports weightung, prefix searches, and stemming in multiple languages
                     tsearch: { prefix: true }
