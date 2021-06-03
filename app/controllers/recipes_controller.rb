@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController 
-  before_action :set_recipe, only: [:edit, :update, :show, :destroy]
+  before_action :set_recipe, only: [:update, :show, :destroy]
 
   def index
     @recipes = policy_scope(Recipe)
@@ -20,8 +20,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
-    @recipe.user = current_user
+    @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save
       redirect_to recipes_path
     else
@@ -31,6 +30,9 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @recipe = current_user.recipes.find(params[:id])
+    authorize @recipe
+    @categories = RecipeCategory.all
   end
 
   def update

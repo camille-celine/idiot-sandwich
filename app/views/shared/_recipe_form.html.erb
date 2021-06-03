@@ -1,0 +1,59 @@
+<%= form_with model: @recipe do |form| %>
+    <div class="field mb-3">
+        <%= form.label :name, class: "form-label" %>
+        <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-floating mb-3">
+        <%= form.label :description, class: "form-label" %>
+        <%= form.text_area :description, class: "form-control", id: "floatingTextarea2" %>
+    </div>
+    <div class="row">
+    <div class="col">
+        <%= form.label :cooking_time, class: "form-label" %>
+        <%= form.number_field :cooking_time, class: "form-control" %>
+    </div>
+    <div class="col">
+        <%= form.label :prep_time, "Preparation Time", class: "form-label" %>
+        <%= form.number_field :prep_time, class: "form-control" %>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col">
+        <%= form.label :difficulty, class: "form-label" %>
+        <%= form.select :difficulty, Recipe.difficulties.keys.map {|difficulty| [difficulty.titleize,difficulty]}, class: "form-control" %>
+    </div>
+    <div class="col">
+        <%= form.label :serving, "Servings", class: "form-label" %>
+        <%= form.number_field :serving, class: "form-control" %>
+    </div>
+    </div>
+    <%= form.fields_for :ingredients, @recipe.ingredients.build do |ingredient_form| %>
+        <div class="row">
+        <div class="col">
+            <%= ingredient_form.label :amount, class: "form-label" %>
+            <%= ingredient_form.number_field :amount, class: "form-control" %>
+        </div>
+        <div class="col">
+            <%= ingredient_form.label :measurement_lookup_id, "Unit",class: "form-label" %>
+            <%= ingredient_form.collection_select :measurement_lookup_id, MeasurementLookup.all, :id, :measurement_type, class: "form-control" %>
+        </div>
+        <div class="col">
+            <%= ingredient_form.label :ingredient_list_id, "Ingredient", class: "form-label" %>
+            <%= ingredient_form.collection_select :ingredient_list_id, IngredientList.all, :id, :name, class: "form-control" %>
+        </div>
+        </div>
+    <% end %>
+    <%= form.fields_for :instructions, @recipe.instructions.build do |instruction_form| %>
+        <%= instruction_form.label :instruction_text, class: "form-label" %>
+        <%= instruction_form.text_area :instruction_text, class: "form-control" %>
+    <% end %>
+    <% @categories.each do |category| %>
+        <p><%= category.name %></p>
+        <%= form.fields_for :recipe_tags do |recipe_tag_form| %>
+        <%= recipe_tag_form.collection_select :tag_id, category.tags, :id, :name, class: "form-control"  %>
+        <% end %>
+    <% end %>
+    <div class="actions">
+        <%= form.submit %>
+    </div>
+<% end %>

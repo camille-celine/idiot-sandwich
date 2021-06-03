@@ -10,7 +10,7 @@
 
 
   <h2>Recipes</h2>
-  <p><%= link_to "See all recipes", recipes_path%></p>
+  <p><%= link_to "See all recipes", recipes_path %></p>
   <% if policy(Recipe).create? %>
       <p><%= link_to "Create a recipe", new_recipe_path %></p>
   <% end %>
