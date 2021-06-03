@@ -1,30 +1,8 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4 form">
-      <h2 class="text-center">Create your recipe</h2>
-        <%= simple_form_for @recipe do |f| %>
-          <%= f.input :name, placeholder: 'Rename your recipe' %>
-          <%= f.input :description, placeholder: 'Description' %>
-          <%= f.input :cooking_time, placeholder: 'Cooking time' %>
-          <%= f.input :prep_time, placeholder: 'Preparation Time' %>
-          <%= f.input :difficulty, collection: Recipe.difficulties.map{ |l| [l.first, l.first.humanize] }, label_method: :second, value_method: :first%>
-          <%= f.input :serving, placeholder: 'Number of servings' %>
-          <%= f.simple_fields_for :ingredients do |i| %>
-            <%= i.input :ingredient_list_id, collection: IngredientList.all %>
-            <%= i.input :measurement_lookup_id, collection: MeasurementLookup.all, label_method: :measurement_type%>
-            <%= i.input :amount %>
-          <% end %>
-          <%= f.simple_fields_for :instructions do |w| %>
-            <%= w.input :instruction_text %>
-          <% end %>
-          <% @categories.each do |category| %>
-             <p><%= category.name %></p> 
-          <%= f.simple_fields_for :recipe_tags do |t| %> 
-              <%= t.input :tag_id, collection: category.tags, label:false%>
-            <% end %>
-          <% end %>
-          <%= f.button :submit, 'Save your recipe', class: "btn btn-primary btn-lg btn-form" %>
-      <% end %>
+      <h2 class="text-center">Edit your recipe</h2>
+      <%= render 'shared/recipe_form' %>
     </div>
   </div>
 </div>

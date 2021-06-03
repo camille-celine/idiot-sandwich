@@ -26,4 +26,6 @@ class Recipe < ApplicationRecord
                     # full text search, supports weightung, prefix searches, and stemming in multiple languages
                     tsearch: { prefix: true }
                   }
+
+  
 end
