@@ -9,19 +9,18 @@
   <% end %>
 
 
-  <h2>Recipes</h2>
-  <p><%= link_to "See all recipes", recipes_path %></p>
-  <% if policy(Recipe).create? %>
-      <p><%= link_to "Create a recipe", new_recipe_path %></p>
-  <% end %>
 
-    <h3>All recipes</h3>
+  <%# if policy(Recipe).create? %>
+     <!-- <p><%#= link_to "Create a recipe", new_recipe_path %></p> -->
+  <%# end %>
+
+    <h3 class="mt-4 mb-4">All recipes</h3>
   <div class="row row-cols-1 row-cols-md-3 g-4 ">
     
     <% @recipes.each do |recipe| %>
       <div class="col mb-4">
         <div class="card h-100">
-          <img src="..." class="card-img-top" alt="...">
+          <%= cl_image_tag recipe.photo.key, height: 80, width:90, crop: :fill %>
           <div class="card-body">
             <h5 class="card-title"><%= recipe.name %></h5>
             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
