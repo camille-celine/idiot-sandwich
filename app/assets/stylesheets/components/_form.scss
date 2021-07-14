@@ -1,8 +1,12 @@
 .form_sign_up {
-  width: 100%;
-  height: 100%;
+  // width: 100%;
+  // height: 100%;
   display:inline;
   padding: 10px;
+
+  .form-control {
+    width: 300px;
+  }
 }
 
 .button_log_in {
@@ -23,7 +27,55 @@
   border-style: solid;
 }
 
-.input{
-  border-radius:10px;
+.input {
+  border-radius: 10px;
   border-color: white;
+}
+
+.form-control {
+  background-color: $beige;
+  // border: 1px solid $gray;
+  border-radius: 5px;
+  margin-right: 16px;
+}
+
+select {
+  background-color: $beige;
+  border-color: #FAF5F0;
+  width: 100%;
+  border-radius: 5px;
+  margin-right: 16px;
+  margin-bottom: 10px;
+  height: 50%;
+  padding: 5px;
+}
+
+.form {
+  
+  h2 {
+    font-family: 'Bitter', serif;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .actions {
+    margin-bottom: 1rem;
+  }
+
+  label {
+    color: $dark-blue; 
+    font-weight: bold;
+  }
+
+  input {
+    border-color: #FAF5F0;
+  }
+
+  textarea {
+    border-color: #FAF5F0;
+  }
+
+  .btn {
+    width: 150px;
+  }
 }
