@@ -11,4 +11,8 @@ $green: #439A86;
 $gray: #0E0000;
 $light-gray: #F4F4F4;
 $white: #FFFFFF; 
-$beige: #faf5f0;
+$beige: #F7F3EF;
+
+:is(h1, h2, h3, h4, h5, h6) {
+    color: $dark-blue;
+  }

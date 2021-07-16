@@ -1,11 +1,13 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Pacifico&display=swap');
 // Define fonts for body and headers
 $body-font: "Nunito", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$headers-font: "Pacifico", "Helvetica", "sans-serif";
 
-
+:is(h2, h3, h4, h5, h6) {
+    letter-spacing: 1.5px;
+  }
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
