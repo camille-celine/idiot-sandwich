@@ -1,13 +1,13 @@
 <div class="container mt-4">
-
-  <%= form_tag recipes_path, class: "d-flex", method: :get do %>
-    <%= text_field_tag :query,
-    params[:query],
-    class: "form-control me-2",
-    placeholder: "Find a recipe" %>
-    <%= submit_tag "Search", class: "btn btn-search" %>
-  <% end %>
-
+  <div class="container">
+    <%= form_tag recipes_path, class: "d-flex", method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control me-2 bg-white",
+      placeholder: "Find a recipe" %>
+      <%= submit_tag "Search", class: "btn btn-search" %>
+    <% end %>
+  </div>
   <h3 class="mt-4">Explore</h3>
     <%= render 'shared/card' %>
 

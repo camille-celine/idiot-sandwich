@@ -17,6 +17,7 @@ class Recipe < ApplicationRecord
 
   accepts_nested_attributes_for :instructions, :ingredients, :recipe_tags
 
+  # Search 
   include PgSearch::Model
   pg_search_scope :search_name_and_description,
                   against: %i[name description],
@@ -28,5 +29,10 @@ class Recipe < ApplicationRecord
                     tsearch: { prefix: true }
                   }
 
+  # cooking time
+
+  def recipe_time
+    cooking_time + prep_time
+  end
   
 end

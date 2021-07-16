@@ -1,10 +1,26 @@
 .navbar-brand {
   justify-content: space-between;
-  font-family: "Pacifico";
+  font-family: "Nunito";
   font-size: 1.5rem;
 }
 
 .fa-bread-slice {
-  color: $white;
+  color: $dark-blue;
 }
 
+.navbar {
+
+    box-shadow: 0px 2px 10px $light-gray;
+  
+
+  a {
+    color: $dark-blue;
+  }
+
+  input {
+    color: $dark-blue;
+    border-color: $dark-blue;
+    border-width: 1.2px;
+    background-color: $white;
+  }
+}

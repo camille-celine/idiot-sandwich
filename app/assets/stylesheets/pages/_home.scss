@@ -4,3 +4,50 @@
     background-color: #222E50;
     color: $white;
 }
+
+// INTRO SECTION
+
+.intros {
+
+
+    .img-box {
+        position: relative;
+
+        .img-thumbnail {
+
+            border: none;
+        }
+    }
+}
+
+.home-search {
+    input#query {
+        background-color: $white;
+    }
+}
+
+.display-2 {
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+    font-family: 'Nunito', sans-serif;
+
+    &--intro {
+        display: inline-block;
+        font-weight: 700;
+        font-family: 'Nunito', sans-serif;
+        font-size: 50px;
+    }
+
+    &--description {
+        font-size: 1rem;
+        display: block;
+        margin-top: 1.2rem;
+        text-transform: none;
+        font-weight: 500;
+
+        @include media-breakpoint-up(lg) {
+            font-size: 1rem;
+            display: inline-block;
+        }
+    }
+}
